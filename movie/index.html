@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MovieZone — Movies</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">MOVIE<span>ZONE</span></a>
+      <div class="nav-links">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Categories</a>
+        <a href="#" class="nav-link">Top Rated</a>
+        <a href="series.html" class="nav-link">Series</a>
+      </div>
+    </nav>
+
+    <main class="site-main">
+      <section class="hero">
+        <h2>Download & Stream Movies — Cinematic Experience</h2>
+      </section>
+
+      <section class="controls">
+        <div class="search-bar">
+          <input id="searchInput" type="text" placeholder="Search movies..." />
+        </div>
+
+        <div class="category-filter">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="action">Action</button>
+          <button class="filter-btn" data-category="comedy">Comedy</button>
+          <button class="filter-btn" data-category="drama">Drama</button>
+          <button class="filter-btn" data-category="sci-fi">Sci-Fi</button>
+        </div>
+      </section>
+
+      <section class="wrapper" id="movieList">
+        <!-- Cards injected here by script.js -->
+      </section>
+    </main>
+
+    <footer>
+        <div class="container">
+          <div class="footer-content">
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fa-brands fa-github"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fa-brands fa-linkedin"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="https://x.com/comosdarko?s=21&t=ZB-wEG2o6YRrXmXm12A3AQ" class="social-link">
+              <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a href="https://wa.me/233541855232" class="social-link"
+                ><i class="fa-brands fa-whatsapp"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a href="mailto:cosmosdarko5@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+              </div>
+              </div>
+
+      <p>&copy; 2025 MovieZone — All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

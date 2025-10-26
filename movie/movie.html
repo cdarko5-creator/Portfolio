@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MovieZone — Movie details</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">MOVIE<span>ZONE</span></a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+      </div>
+    </nav>
+
+    <main style="padding-top: 96px">
+      <div
+        id="movie-container"
+        class="movie-details"
+        style="min-height: 200px"
+      ></div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="social-links">
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://x.com/comosdarko?s=21&t=ZB-wEG2o6YRrXmXm12A3AQ"
+              class="social-link"
+            >
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="https://wa.me/233541855232" class="social-link"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="mailto:cosmosdarko5@gmail.com" class="social-link"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <p>&copy; 2025 MovieZone — All rights reserved.</p>
+    </footer>
+
+    <script>
+      // read selected movie from localStorage
+      (function () {
+        const container = document.getElementById("movie-container");
+        const raw = localStorage.getItem("selectedMovie");
+        if (!raw) {
+          container.innerHTML =
+            "<p style='color:var(--muted)'>No movie selected. <a href='index.html'>Back to home</a></p>";
+          return;
+        }
+        try {
+          const m = JSON.parse(raw);
+          const castHtml = (m.cast || [])
+            .map(
+              (c) =>
+                `<li><img src="images/placeholder-avatar.png" alt="${c}" title="${c}"></li>`
+            )
+            .join("");
+          const html = `
+          <img src="${m.poster}" alt="${m.title}">
+          <h2>${m.title} <small style="color:var(--muted)">(${
+            m.year
+          })</small></h2>
+          <div class="meta">${
+            m.genre ? m.genre.charAt(0).toUpperCase() + m.genre.slice(1) : ""
+          } • Rating: ${m.rating}/10</div>
+          <p style="color:var(--muted);margin-top:12px">${
+            m.description || ""
+          }</p>
+          <div style="margin-top:12px"><strong>Cast:</strong>
+            <ul style="display:flex;gap:10px;list-style:none;padding:10px 0;margin:0">${castHtml}</ul>
+          </div>
+          <div style="margin-top:14px">
+            <a class="download-btn" href="${m.download}" download>⬇ Download</a>
+            <a class="back-btn" href="index.html">Back to Movies</a>
+          </div>
+        `;
+          container.innerHTML = html;
+        } catch (e) {
+          container.innerHTML =
+            "<p style='color:var(--muted)'>Could not load movie data.</p>";
+        }
+      })();
+    </script>
+  </body>
+</html>
