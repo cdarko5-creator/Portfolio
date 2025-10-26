@@ -1,0 +1,231 @@
+/* Reset */
+
+:root {
+  --neon-red: #ff003c;
+  --neon-pink: #ff2a6d;
+  --dark-bg: #8a8a8a;
+  --darker-bg: #050505;
+  --text-light: #ffffff;
+  --text-dim: #aaaaaa;
+  --transition: all 0.4s cubic-bezier (0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-image: url(/images/game.jpg);
+  backdrop-filter: blur(5px);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  padding: 25px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur (10px);
+  background: rgba(10, 10, 10, 0.7);
+  border-bottom: 1px solid rgba(255, 0, 60, 0.1);
+}
+
+.logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.logo span {
+  color: var(--neon-red);
+  text-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--neon-red);
+  transition: var(--text-light);
+}
+.nav-link:hover {
+  color: var(--text-light);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Main Section */
+#project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px;
+}
+
+.project-card {
+  background: rgb(236, 236, 233);
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(247, 4, 4, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+p {
+  font-size: large;
+  text-align: center;
+  margin: 20px;
+  margin-bottom: 60px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  transition: border 0.3s;
+}
+input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+button {
+  display: block;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 38px;
+  background: transparent;
+  color: var(--neon-red);
+  border: 2px solid var(--neon-red);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  box-shadow: 0 0 25px rgba(255, 0, 60, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin: 0 auto;
+}
+button:hover {
+  color: #000;
+  box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
+  transform: translateY(-5px);
+}
+
+#output {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: rgba(10, 10, 10, 0.7);
+  padding: 50px 0 30px;
+  text-align: center;
+  height: 70px;
+  bottom: 0;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+
+.footer-logo span {
+  color: var(--neon-red);
+}
+
+.footer-text {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  margin-bottom: 30px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+  font-size: 1.5rem;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+  background: var(--neon-red);
+  color: #000;
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
+  border-color: var(--neon-red);
+}
+
+.copyright {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  align-items: center;
+  padding-top: 30px;
+  border-top: 1px solid ☐ rgba(255, 255, 255, 0.05);
+}

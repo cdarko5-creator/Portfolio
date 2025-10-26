@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/projects/game/game.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="logo">NUMBER GUES<span>SING GAME</span></a>
+      <div class="nav-links">
+        <a href="/index.html" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+      </div>
+    </nav>
+
+    <!-- Game Section -->
+    <section id="project" >
+      <div class="project-card">
+        <p>
+        I'm thinking of a number between <strong>1</strong> and
+        <strong>100</strong>. Can you guess it?
+      </p>
+      
+
+      <input
+        type="number"
+        id="guessInput"
+        placeholder="Enter your guess"
+        min="1"
+        max="100"
+      />
+      <button onclick="checkGuess()">Submit Guess</button>
+      <button onclick="restartGame()" style="display: none" id="restartBtn">
+        Play Again
+      </button>
+
+      <p id="feedback"></p>
+      <p id="attempts"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="social-links">
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a
+              href="https://x.com/comosdarko?s=21&t=ZB-wEG2o6YRrXmXm12A3AQ"
+              class="social-link"
+            >
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="https://wa.me/233541855232" class="social-link"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+            <a href="#" class="social-link"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="mailto:cosmosdarko5@gmail.com" class="social-link"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Game Script -->
+    <script>
+      let targetNumber = Math.floor(Math.random() * 100) + 1;
+      let attempts = 0;
+      let gameOver = false;
+
+      function checkGuess() {
+        if (gameOver) return;
+
+        const userGuess = parseInt(document.getElementById("guessInput").value);
+        const feedback = document.getElementById("feedback");
+        const attemptsDisplay = document.getElementById("attempts");
+
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+          feedback.innerText =
+            "⚠️ Please enter a valid number between 1 and 100.";
+          return;
+        }
+
+        attempts++;
+
+        if (userGuess === targetNumber) {
+          feedback.innerText = `✅ Correct! You guessed it in ${attempts} attempts.`;
+          feedback.style.color = "green";
+          gameOver = true;
+          document.getElementById("restartBtn").style.display = "inline-block";
+        } else if (userGuess < targetNumber) {
+          feedback.innerText = "📉 Too low! Try again.";
+          feedback.style.color = "red";
+        } else {
+          feedback.innerText = "📈 Too high! Try again.";
+          feedback.style.color = "red";
+        }
+
+        attemptsDisplay.innerText = `Attempts: ${attempts}`;
+        document.getElementById("guessInput").value = "";
+      }
+
+      function restartGame() {
+        targetNumber = Math.floor(Math.random() * 100) + 1;
+        attempts = 0;
+        gameOver = false;
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("attempts").innerText = "";
+        document.getElementById("guessInput").value = "";
+        document.getElementById("restartBtn").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
